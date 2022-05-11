@@ -1,24 +1,42 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Header from './components/header/Header';
+import Navbar from './components/navbar/Navbar';
+import TopNotification from './components/topnotification/TopNotification';
+import Body from './pages/body/Body';
 
 function App() {
+  const [loader, setLoader] = useState(false)
+
+  useEffect(()=>{
+    setLoader(true)
+    setTimeout(()=>{
+      setLoader(false);
+    },3000)
+  },[]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    loader === true ? 
+    <>
+    <div className='d-flex justify-content-center' style={{marginTop:"30vh"}}>
+    <div class="spinner-grow text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-secondary mx-3" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
     </div>
+    </>
+    :
+    <>
+<TopNotification/>
+<Navbar/>
+<Header/>
+<Body/>
+</>
   );
 }
 
