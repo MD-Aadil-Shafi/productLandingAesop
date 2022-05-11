@@ -37,6 +37,7 @@
       height: 60vh;
       bottom: 80px;
       right: 10px;
+      position: fixed;
   }
 
   .top-action-content{
